@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(250, 218, 62);
+    min-height: 100vh;
+}
+
+.container {
+    width: 1000px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    position: relative;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.card:nth-child(even) {
+    flex-direction: column-reverse
+}
+
+.card .imgBx {
+    position: relative;
+    height: 250px;
+    width: 250px;
+    overflow: hidden;
+}
+
+.card .imgBx::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    opacity: .3;
+    z-index: 1;
+    transition: .3s;
+}
+
+.card:hover .imgBx::before {
+    opacity: 0;
+}
+
+.card .imgBx img {
+    position: absolute;
+    top: 0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: .3s
+}
+
+.card:hover .imgBx img {
+    transform: scale(1.1)
+}
+
+.card .content {
+    position: relative;
+    text-align: center;
+    height: 250px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    transition: .3s;
+    background-color: #FFF;
+}
+
+
+
+.card:hover .content {
+    background-color: #ffbf00;
+    color: #FFF;
+}
+
+@media (max-width: 1000px) {
+    .container {
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+        padding: 50px;
+    }
+    
+    .card {
+        flex-direction: row;
+        margin-bottom: 1.5rem;
+    }
+    
+    .card:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+    
+    .card .imgBx,
+    .card .content {
+        width: 50%;
+        padding: 1rem;
+    }
+}
+
+@media(max-width: 600px) {
+    
+    .container {
+        padding: 2rem;
+    }
+    .card {
+        flex-direction: column;
+    }
+    
+    .card:nth-child(even) {
+        flex-direction: column;
+    }
+    
+    .card .imgBx,
+    .card .content {
+        width:100%;
+        padding: 1rem;
+        height: 250px;
+    }
+    
+    .card .content {
+        height: 200px
+    }
+}
